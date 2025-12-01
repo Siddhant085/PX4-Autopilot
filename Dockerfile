@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     git \
     build-essential \
+    lsb-release \
+    wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -24,10 +26,9 @@ USER appuser
 ENV USER=appuser
 WORKDIR /home/appuser
 
-RUN git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+RUN git clone https://github.com/Siddhant085/PX4-Autopilot.git --recursive
 
 WORKDIR /home/appuser/PX4-Autopilot
 
-RUN sudo apt update && sudo apt install lsb-release wget
 RUN bash ./Tools/setup/ubuntu.sh
 ENTRYPOINT ["make", "px4_sitl", "gz_x500"]
