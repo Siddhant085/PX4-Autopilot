@@ -33,4 +33,5 @@ RUN git clone https://github.com/Siddhant085/PX4-Autopilot.git --recursive
 WORKDIR /home/appuser/PX4-Autopilot
 
 RUN bash ./Tools/setup/ubuntu.sh
-ENTRYPOINT ["make", "px4_sitl", "gz_x500"]
+RUN make px4_sitl
+
